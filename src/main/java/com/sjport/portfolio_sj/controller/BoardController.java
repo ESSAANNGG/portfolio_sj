@@ -1,13 +1,13 @@
 package com.sjport.portfolio_sj.controller;
 
 import com.sjport.portfolio_sj.entity.Board;
-import com.sjport.portfolio_sj.repository.BoardRepository;
 import com.sjport.portfolio_sj.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -28,7 +28,12 @@ public class BoardController {
     }
 
     @PutMapping("/updateBoard/{gno}")
-    public Board updateBoard(){
-        return null;
+    public ResponseEntity<Board> updateBoard(@PathVariable Long gno, @RequestBody Board board){
+        return boardService.updateBoard(gno, board);
+    }
+
+    @DeleteMapping("/deleteBoard/{gno}")
+    public ResponseEntity<Map<String, Boolean>> deleteBoard(@PathVariable Long gno){
+        return boardService.deleteBoard(gno);
     }
 }

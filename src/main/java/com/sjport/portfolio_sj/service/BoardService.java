@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BoardService {
@@ -36,5 +38,15 @@ public class BoardService {
 
         Board updateBoard = boardrepository.save(board);
         return ResponseEntity.ok(updateBoard);
+    }
+
+    //delete
+    public ResponseEntity<Map<String, Boolean>> deleteBoard(@PathVariable Long gno){
+        Board board = boardrepository.findById(gno)
+                .orElseThrow(() -> new ResourceNotFoundException("Board not exist with id :" + gno));
+        boardrepository.delete(board);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 }

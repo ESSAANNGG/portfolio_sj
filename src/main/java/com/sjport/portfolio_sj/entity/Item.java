@@ -19,6 +19,13 @@ public class Item extends BaseEntity{
     @Column(length = 255, nullable = false)
     private String itemName;
 
-    @Column(length = 500, nullable = false)
-    private String itemElxplain;
+    @Column(length = 500)
+    private String itemExplain;
+
+    @Column(nullable = false)
+    private int itemPrice;
+
+    @Column(nullable = false)
+    private int itemStock;
+
 }

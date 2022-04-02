@@ -20,7 +20,6 @@ public class ItemService {
 
     public Item createItem(@RequestBody Item item){
         int a = item.getItemStock();
-        a += a;
         return itemRepository.save(item);
     }
 }

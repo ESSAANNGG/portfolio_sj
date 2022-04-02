@@ -22,10 +22,10 @@ public class Item extends BaseEntity{
     @Column(length = 500)
     private String itemExplain;
 
-    @Column(nullable = false)
+    @Column
     private int itemPrice;
 
-    @Column(nullable = false)
+    @Column
     private int itemStock;
 
 }

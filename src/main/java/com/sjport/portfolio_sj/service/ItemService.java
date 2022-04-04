@@ -18,8 +18,10 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
-    public Item createItem(@RequestBody Item item){
-        int a = item.getItemStock();
+    public Item createItem(@RequestBody Item item, int quantity){
+        int nowStock = item.getItemStock();
+        nowStock += quantity;
+        item.setItemStock(nowStock);
         return itemRepository.save(item);
     }
 }

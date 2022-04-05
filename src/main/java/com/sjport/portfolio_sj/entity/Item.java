@@ -26,6 +26,7 @@ public class Item extends BaseEntity{
     private int itemPrice;
 
     @Column
-    private int itemStock;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long itemStock;
 
 }
